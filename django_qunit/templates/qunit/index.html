@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load url from future %}
+{% load get_settings %}{% get_settings as settings %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,10 +8,10 @@
   <link rel="stylesheet" href="{{ qunit_css }}" type="text/css" media="screen">
   <script type="text/javascript" src="{{ qunit_js }}"></script>
   {% for url in suite.extra_urls.js %}
-    <script type="text/javascript" src="{{ url }}"></script>
+    <script type="text/javascript" src="{{ settings.STATIC_URL }}{{ url }}"></script>
   {% endfor %}
   {% for url in suite.extra_urls.css %}
-    <link href="{{ url }}" rel="stylesheet">
+    <link href="{{ settings.STATIC_URL }}{{ url }}" rel="stylesheet">
   {% endfor %}
   {% for url in suite.extra_media_urls %}
     <script type="text/javascript" src="{{ MEDIA_URL }}{{ url }}"></script>
